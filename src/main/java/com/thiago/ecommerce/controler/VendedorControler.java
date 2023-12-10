@@ -1,5 +1,6 @@
 package com.thiago.ecommerce.controler;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,14 +12,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.thiago.ecommerce.modal.AvaliacaoProduto;
+import com.thiago.ecommerce.dto.VendedorDto;
+import com.thiago.ecommerce.service.IProdutoService;
+import com.thiago.ecommerce.service.IVendedorService;
 
 @RestController
-@RequestMapping("/avaliacao")
-public class AvaliacaoProdutoControler {
+@RequestMapping("/vendedor")
+public class VendedorControler {
 
+	@Autowired
+	private IVendedorService vendedorService;
+	
+	@Autowired
+	private IProdutoService produtoService;
+	
 	@PostMapping("/cadastrar")
-	public ResponseEntity cadastrar(@RequestBody AvaliacaoProduto avaliacao) {
+	public ResponseEntity cadastrar(@RequestBody VendedorDto vendedor) {
 		try{
 			return new ResponseEntity(HttpStatus.CREATED);
 		}catch (Exception e) {
@@ -27,7 +36,7 @@ public class AvaliacaoProdutoControler {
 	}
 	
 	@PatchMapping("/editar")
-	public ResponseEntity editar(@RequestBody AvaliacaoProduto avaliacao) {
+	public ResponseEntity editar(@RequestBody VendedorDto vendedor) {
 		try{
 			return new ResponseEntity(HttpStatus.OK);
 		}catch (Exception e) {

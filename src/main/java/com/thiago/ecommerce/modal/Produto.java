@@ -1,7 +1,6 @@
 package com.thiago.ecommerce.modal;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -11,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,4 +36,6 @@ public class Produto implements Serializable{
 	private String dirFotoProduto;
 	@Column
 	private String descricao;
+	@ManyToOne
+	private Vendedor vendedor;
 }
